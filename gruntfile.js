@@ -14,10 +14,9 @@ module.exports = function(grunt) {
     grunt.initConfig({
         config: {
             sassInput: 'assets/sass/',
-            coffeeInput: 'assets/coffee/',
-            jsRawIO: 'assets/js/',
-            cssOutput: 'built/assets/css/',
-            jsOutput: 'built/assets/js/'
+            cssOutput: 'assets/css/',
+            jsInput: 'assets/js/',
+            jsOutput: 'assets/js/built/'
         },
 
         clean: {
@@ -28,7 +27,7 @@ module.exports = function(grunt) {
                 }
             },
             js: {
-                src: ['<%= config.jsRawIO %>*.js', '<%= config.jsOutput %>*.js'],
+                src: ['<%= config.jsOutput %>*.js'],
                 options: {
                     force: true
                 }
@@ -49,7 +48,7 @@ module.exports = function(grunt) {
 
         autoprefixer: {
             options: {
-                browsers: ['last 5 version', 'ie >= 8']
+                browsers: ['last 5 version', 'ie >= 9']
             },
             prod: {
                 src: '<%= config.cssOutput %>style.css'
@@ -60,33 +59,6 @@ module.exports = function(grunt) {
             prod: {
                 files: {
                     '<%= config.cssOutput %>style.min.css': '<%= config.cssOutput %>style.css'
-                }
-            }
-        },
-
-        coffee: {
-            options: {
-                bare: true
-            },
-            glob_to_multiple: {
-                expand: true,
-                flatten: true,
-                cwd: '<%= config.coffeeInput %>',
-                src: ['*.coffee', '!_*.coffee'],
-                dest: '<%= config.jsRawIO %>',
-                ext: '.js'
-            }
-        },
-
-        coffeelint: {
-            dist: {
-                files: {
-                    src: ['<%= config.coffeeInput %>*.coffee']
-                },
-                options: {
-                    max_line_length: {
-                        level: "ignore"
-                    }
                 }
             }
         },
@@ -114,17 +86,14 @@ module.exports = function(grunt) {
                     $: true,
                     jQuery: true,
                     _gaq: true,
-                    Modernizr: true,
-                    Davis: true,
-                    Parallax: true,
-                    Helium: true
+                    Modernizr: true
                 }
             },
             gruntfile: {
                 src: 'gruntfile.js'
             },
             src: {
-                src: ['<%= config.jsRawIO %>*.js']
+                src: ['<%= config.jsInput %>*.js']
             }
         },
 
@@ -135,12 +104,10 @@ module.exports = function(grunt) {
             },
             js: {
                 src: [
-                    '<%= config.jsRawIO %>plugins/jquery-*.js', // jQuery must be the first plugin loaded, as it's depended by jQuery plugins as well as Davis.js
-                    '<%= config.jsRawIO %>plugins/jquery.*.js',
-                    '<%= config.jsRawIO %>plugins/davis.js',
-                    '<%= config.jsRawIO %>plugins/underscore.js',
-                    '<%= config.jsRawIO %>plugins/parallax.min.js',
-                    '<%= config.jsRawIO %>*.js'
+                    '<%= config.jsInput %>plugins/jquery-*.js', // jQuery must be the first plugin loaded, as it's depended by jQuery plugins as well as Davis.js
+                    '<%= config.jsInput %>plugins/jquery.*.js',
+                    '<%= config.jsInput %>plugins/underscore.js',
+                    '<%= config.jsInput %>*.js'
                 ],
                 dest: '<%= config.jsOutput %>do.js'
             }
@@ -164,9 +131,9 @@ module.exports = function(grunt) {
 
         watch: {
             // whenever a coffee file is changed, compile it
-            coffee: {
+            js: {
                 files: '<%= config.coffeeInput %>**/*.coffee',
-                tasks: ['clean:js', 'coffeelint', 'coffee', 'jshint', 'concat', 'uglify']
+                tasks: ['clean:js', 'jshint', 'concat', 'uglify']
             },
             // whenever a scss file is changed, compile it
             sass: {
@@ -177,5 +144,5 @@ module.exports = function(grunt) {
     });
 
     // default task.
-    grunt.registerTask('default', ['clean', 'coffeelint', 'coffee', 'jshint', 'concat', 'uglify', 'sass', 'autoprefixer', 'cssmin']);
+    grunt.registerTask('default', ['clean', 'jshint', 'concat', 'uglify', 'sass', 'autoprefixer', 'cssmin']);
 };
