@@ -1,14 +1,14 @@
-app.modelBuildr = (function(app, $) {
+(function(app, $) {
 	'use strict';
 
-	var init, _addMetaList, _addMetaPage, _cleanArrayify, _createCleanModel, _getData, _internalExternalImg, _lineBreakify, _postProcessing, _processAttribution, _processGeneral, _processMedia, _processSpecific, _slugify, _sortRawInput, _uppercasify;
+	var _init, _addMetaList, _addMetaPage, _cleanArrayify, _createCleanModel, _getData, _internalExternalImg, _lineBreakify, _postProcessing, _processAttribution, _processGeneral, _processMedia, _processSpecific, _slugify, _sortRawInput, _uppercasify;
 
-	init = function(callback) {
+	_init = function(callback) {
 		return _getData(callback);
 	};
 
 	_getData = function(callback) {
-		request = $.ajax({
+		var request = $.ajax({
 			dataType : 'json',
 			url      : 'data/data.json'
 		});
@@ -266,7 +266,7 @@ app.modelBuildr = (function(app, $) {
 		}
 	};
 
-	return {
-		init: init
+	app.modelBuildr = {
+		init: _init
 	};
 })(window.app = window.app || {}, jQuery);

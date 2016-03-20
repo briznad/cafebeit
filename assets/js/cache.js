@@ -1,4 +1,4 @@
-app.cache = (function(app, $) {
+(function(app, $) {
 	'use strict';
 
 	var _init = function() {
@@ -10,9 +10,9 @@ app.cache = (function(app, $) {
 			$title: $('title'),
 			$h1: $('h1')
 		};
-	}
+	};
 
-	return {
+	app.cache = {
 		init: _init
 	};
 })(window.app = window.app || {}, jQuery);
