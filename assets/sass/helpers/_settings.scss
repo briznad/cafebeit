@@ -3,7 +3,8 @@
 // font variables
 $font-base-size: 14px;
 
-$font-normal: 'apercuregular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-normal: 'Lato', system, -apple-system, '.SFNSDisplay-Regular', 'Helvetica Neue', Helvetica, 'Arial', Arial, sans-serif;
+$font-header: 'Comfortaa', system, -apple-system, '.SFNSDisplay-Regular', 'Helvetica Neue', Helvetica, 'Arial', Arial, sans-serif;
 $font-icon: 'fontello';
 
 // color variables
@@ -30,10 +31,11 @@ $button-background-active: $color-black;
 $golden-ratio: 61.803398875%;
 
 // breakpoints
-$breakpoint-xs : 0px;
-$breakpoint-sm : 480px;
-$breakpoint-md : 768px;
-$breakpoint-lg : 960px;
-$breakpoint-xl : 1200px;
+$breakpoint-xs  : 0px;
+$breakpoint-sm  : 480px;
+$breakpoint-md  : 768px;
+$breakpoint-lg  : 960px;
+$breakpoint-xl  : 1200px;
+$breakpoint-xxl : 1400px;
 
 /* /settings */
