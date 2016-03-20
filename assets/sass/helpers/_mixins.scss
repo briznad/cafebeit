@@ -12,3 +12,74 @@
 }
 
 /* /mixins */
+
+/* responsive mixins */
+
+@mixin xs {
+  @media only screen and (min-width: #{$breakpoint-xs}) {
+    @content;
+  }
+}
+
+@mixin sm {
+  @media only screen and (min-width: #{$breakpoint-sm}) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media only screen and (min-width: #{$breakpoint-md}) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media only screen and (min-width: #{$breakpoint-lg}) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media only screen and (min-width: #{$breakpoint-xl}) {
+    @content;
+  }
+}
+
+@mixin xxl {
+  @media only screen and (min-width: #{$breakpoint-xxl}) {
+    @content;
+  }
+}
+
+// focused media queries
+@mixin below-sm {
+  @media only screen and (max-width: #{$breakpoint-sm - 1px}) {
+    @content;
+  }
+}
+
+@mixin below-md {
+  @media only screen and (max-width: #{$breakpoint-md - 1px}) {
+    @content;
+  }
+}
+
+@mixin below-lg {
+  @media only screen and (max-width: #{$breakpoint-lg - 1px}) {
+    @content;
+  }
+}
+
+@mixin below-xl {
+  @media only screen and (max-width: #{$breakpoint-xl - 1px}) {
+    @content;
+  }
+}
+
+@mixin below-xxl {
+  @media only screen and (max-width: #{$breakpoint-xxl - 1px}) {
+    @content;
+  }
+}
+
+/* /responsive mixins */
