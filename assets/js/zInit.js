@@ -1,13 +1,10 @@
-var aWindow;
+(function(app, $) {
+	'use strict';
 
-aWindow = aWindow || {};
+	// init cache
+	app.cache.init();
 
-aWindow.init = (function() {
-  'use strict';
-  aWindow.template.init(function() {
-    return aWindow.modelBuildr.init(function() {
-      return aWindow.router.init();
-    });
-  });
-  return aWindow.lightbox.init();
-})();
+	return app.modelBuildr.init(function(status) {
+		console.debug(status ? 'app is ready to rock!' : 'uh-oh! something went wrong. things may not work out so well :(');
+	});
+})(window.app = window.app || {}, jQuery);

@@ -1,14 +1,18 @@
-var aWindow;
+app.cache = (function(app, $) {
+	'use strict';
 
-aWindow = aWindow || {};
+	var _init = function() {
+		app.cache = {
+			$window: $(window),
+			$document: $(document),
+			$html: $(document.documentElement),
+			$body: $(document.body),
+			$title: $('title'),
+			$h1: $('h1')
+		};
+	}
 
-aWindow.cache = {
-  $window: $(window),
-  $document: $(document),
-  $html: $(document.documentElement),
-  $body: $(document.body),
-  $title: $('title'),
-  $h1: $('h1'),
-  $dynamicContainer: $('#dynamicContainer'),
-  $helium: $('#Helium')
-};
+	return {
+		init: _init
+	};
+})(window.app = window.app || {}, jQuery);
