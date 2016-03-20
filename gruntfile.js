@@ -132,7 +132,7 @@ module.exports = function(grunt) {
         watch: {
             // whenever a coffee file is changed, compile it
             js: {
-                files: '<%= config.coffeeInput %>**/*.coffee',
+                files: '<%= config.jsInput %>*.js',
                 tasks: ['clean:js', 'jshint', 'concat', 'uglify']
             },
             // whenever a scss file is changed, compile it
