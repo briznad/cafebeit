@@ -20,27 +20,39 @@
     </head>
 
     <body>
-        <div itemscope itemtype="http://schema.org/CafeOrCoffeeShop">
-            <h1 itemprop="name">Cafe Beit</h1>
+        <main>
+            <div itemscope itemtype="http://schema.org/CafeOrCoffeeShop">
+                <figure class="primary-media" itemscope itemtype="http://schema.org/Photograph">
+                    <img class="primary-image" itemprop="image" src="assets/images/cortado-pour.png" />
 
-            <a href="mailto:cafebeit@gmail.com" itemprop="email">cafebeit@gmail.com</a>
+                    <figcaption class="image-attribution" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                        <meta itemprop="name" content="Matt Tilghman" />
+                        media by <a href="mailto:jane-doe@xyz.edu" itemprop="email">Matt Tilghman</a>
+                        <a href="http://www.janedoe.com" itemprop="url">Matt Tilghman</a>
+                   </figcaption>
+                </figure>
 
-            <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-                <span itemprop="streetAddress">158 Bedford Ave</span>,
-                <span itemprop="addressLocality">Brooklyn</span>,
-                <span itemprop="addressRegion">NY</span> <span itemprop="postalCode">11211</span>
+                <h1 itemprop="name">Cafe Beit</h1>
+
+                <a href="mailto:cafebeit@gmail.com" itemprop="email">cafebeit@gmail.com</a>
+
+                <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                    <span itemprop="streetAddress">158 Bedford Ave</span>,
+                    <span itemprop="addressLocality">Brooklyn</span>,
+                    <span itemprop="addressRegion">NY</span> <span itemprop="postalCode">11211</span>
+                </div>
+
+                Hours:
+                <time itemprop="openingHours" datetime="Mo,Tu,We,Th,Fr 07:00-19:00">Mon-Fri 7am - 7pm</time>
+                <time itemprop="openingHours" datetime="Sa,Su 08:00-20:00">Sat-Sun 8am - 8pm</time>
+
+                <div class="visually-hidden">
+                    Serves Cuisine: <span itemprop="servesCuisine" class="visually-hidden">coffee</span>
+
+                    Price Range: <span itemprop="priceRange">$</span>
+                </div>
             </div>
-
-            Hours:
-            <time itemprop="openingHours" datetime="Mo,Tu,We,Th,Fr 07:00-19:00">Mon-Fri 7am - 7pm</time>
-            <time itemprop="openingHours" datetime="Sa,Su 08:00-20:00">Sat-Sun 8am - 8pm</time>
-
-            <div class="visually-hidden">
-                Serves Cuisine: <span itemprop="servesCuisine" class="visually-hidden">coffee</span>
-
-                Price Range: <span itemprop="priceRange">$</span>
-            </div>
-        </div>
+        </main>
 
         <!--[if lt IE 9]>
             <p class="chromeframe" style="position: fixed; width: 100%; top: 0; margin: 0; padding: 15px; text-align: center; background-color: #555;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
