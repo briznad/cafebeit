@@ -1,5 +1,5 @@
 /**
- * Grunt configuration for aWindowNYC
+ * Grunt configuration for Cafe Beit
  **/
 module.exports = function(grunt) {
     'use strict';
@@ -13,21 +13,21 @@ module.exports = function(grunt) {
     // project configuration
     grunt.initConfig({
         config: {
-            sassInput: 'assets/sass/',
-            cssOutput: 'assets/css/',
-            jsInput: 'assets/js/',
-            jsOutput: 'assets/js/built/'
+            sassInput : 'assets/sass/',
+            cssOutput : '../assets/css/',
+            jsInput   : 'assets/js/',
+            jsOutput  : '../assets/js/'
         },
 
         clean: {
             css: {
-                src: ['<%= config.cssOutput %>*.css'],
+                src: ['<%= config.cssOutput %>**/*'],
                 options: {
                     force: true
                 }
             },
             js: {
-                src: ['<%= config.jsOutput %>*.js'],
+                src: ['<%= config.jsOutput %>**/*'],
                 options: {
                     force: true
                 }
@@ -37,7 +37,7 @@ module.exports = function(grunt) {
         sass: {
             prod: {
                 options: {
-                    includePaths: ['<%= config.sassInput %>*/'],
+                    includePaths: ['<%= config.sassInput %>**/'],
                     outputStyle: 'nested'
                 },
                 files: {
