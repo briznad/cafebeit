@@ -5,6 +5,7 @@
 
 // helpers
 @import "helpers/fonts";
+@import "helpers/colors";
 @import "helpers/settings";
 @import "helpers/icons";
 @import "helpers/mixins";
@@ -18,6 +19,7 @@
 @import "partials/footer";
 
 // modules
+@import "modules/homepage";
 // @import "modules/contact";
 // @import "modules/modal";
 

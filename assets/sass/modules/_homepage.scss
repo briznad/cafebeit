@@ -1,0 +1,40 @@
+.homepage {
+	main {
+		@extend .clearfix;
+
+		font-size: 2em;
+	}
+
+	h1 {
+		text-align: center;
+        margin-bottom: 0.5em;
+	    font-size: 3.5em;
+	}
+
+	.primary-media {
+		float: left;
+		width: 100% - $golden-ratio;
+	    margin-right: 50px;
+	}
+
+	.image-attribution {
+		font-size: 0.5em;
+	}
+
+	.location-link,
+	.hours-section {
+		display: block;
+		margin-bottom: 1em;
+	}
+
+	.hours-section {
+		time {
+			display: block;
+		}
+
+		.days {
+			display: inline-block;
+			width: 12%;
+		}
+	}
+}

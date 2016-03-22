@@ -3,12 +3,12 @@
 
 	var _init = function() {
 		app.cache = {
-			$window: $(window),
-			$document: $(document),
-			$html: $(document.documentElement),
-			$body: $(document.body),
-			$title: $('title'),
-			$h1: $('h1')
+			$window           : $(window),
+			$document         : $(document),
+			$html             : $(document.documentElement),
+			$body             : $(document.body),
+			$title            : $('title'),
+			$dynamicContainer : $('#dynamicContainer')
 		};
 	};
 
