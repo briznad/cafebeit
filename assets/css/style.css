@@ -608,6 +608,8 @@ li {
 .homepage .location-link, .homepage .hours-section, .homepage .contact-link, .homepage .description-section {
   display: block;
   margin-bottom: 1em; }
+.homepage .location-link, .homepage .contact-link {
+  display: inline-block; }
 @media only screen and (max-width: 767px) {
   .homepage .location-link:after {
     content: 'click for map';

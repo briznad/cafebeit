@@ -43,6 +43,11 @@
 		margin-bottom: 1em;
 	}
 
+	.location-link,
+	.contact-link {
+		display: inline-block;
+	}
+
 	.location-link {
 		@include below-md {
 			&:after {
