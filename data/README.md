@@ -8,9 +8,9 @@ h2. example data file:
 	"photo" : {
 		"file" : "cortado-pour.png",
 		"attribution" : {
-			"name" : "Brad Mallow",
+			"name" : "Jane Doe",
 			"url" : "http://bradmallow.com",
-            "email" : "brad.mallow@gmail.com"
+            "email" : "jane.doe@example.com"
 		}
 	},
 	"address" : {
