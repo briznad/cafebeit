@@ -1,4 +1,4 @@
-h1. explanation of data file
+explanation of data file
 ======
 How to modify the info shown on the website.
 h2. example data file:
