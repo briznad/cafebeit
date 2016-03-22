@@ -19,7 +19,22 @@ How to modify [data.json](https://github.com/briznad/cafebeit/blob/gh-pages/data
 		"addressRegion" : "NY",
 		"postalCode" : "11211"
 	},
-	"hours" : ["Mo,Tu,We,Th,Fr 07:00-19:00", "Sa,Su 08:00-20:00"],
+	"hours" : [
+        {
+            "days" : "Mo,Tu,We,Th,Fr",
+            "hours" : {
+                "open" : "07:00",
+                "close" : "19:00"
+            }
+        },
+        {
+            "days" : "Sa,Su",
+            "hours" : {
+                "open" : "08:00",
+                "close" : "20:00"
+            }
+        }
+    ],
 	"email" : "cafebeit@gmail.com",
 	"description" : [
 		"Cardigan banh mi pabst, trust fund ethical artisan lumbersexual gluten-free schlitz VHS raw denim man braid. Wolf keffiyeh synth church-key. Viral church-key bitters mustache literally celiac. Chillwave williamsburg fap wolf tumblr austin. Pug keffiyeh lo-fi paleo hoodie synth, pickled hella vinyl williamsburg hammock. Ugh locavore jean shorts tofu lo-fi. Brooklyn slow-carb ramps, tattooed cardigan truffaut sriracha austin bitters.",

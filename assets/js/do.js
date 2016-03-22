@@ -10422,7 +10422,22 @@ return jQuery;
 				"addressRegion" : "NY",
 				"postalCode" : "11211"
 			},
-			"hours" : ["Mo,Tu,We,Th,Fr 07:00-19:00", "Sa,Su 08:00-20:00"],
+			"hours" : [
+				{
+					"days" : "Mo,Tu,We,Th,Fr",
+					"hours" : {
+						"open" : "07:00",
+						"close" : "19:00"
+					}
+				},
+				{
+					"days" : "Sa,Su",
+					"hours" : {
+						"open" : "08:00",
+						"close" : "20:00"
+					}
+				}
+			],
 			"email" : "cafebeit@gmail.com",
 			"description" : []
 		};
@@ -10499,29 +10514,20 @@ return jQuery;
 
 		// generate human hours from robot hours
 		if (app.model.hours && app.model.hours.length) {
-			var tempHours = [];
-
 			_.each(app.model.hours, function(value) {
-				var humanDays,
-					humanHours,
-					tempArr = value.split(' '),
-					tempDaysArr = tempArr[0].split(','),
-					tempHoursArr = tempArr[1].split('-');
+				if (typeof value.days === 'string') {
+					value.days = value.days.replace(' ', '').split(',');
+				} else {
+					return;
+				}
 
-				humanDays = __.dayCodeToAbbr(tempDaysArr[0]) + '-' + __.dayCodeToAbbr(tempDaysArr.pop());
+				value['robot'] = value.days.toString() + ' ' + value.hours.open + '-' + value.hours.close;
 
-				humanHours = __.twentyFourHourTo12Hour(tempHoursArr[0]) + ' - ' + __.twentyFourHourTo12Hour(tempHoursArr[1]);
-
-				tempHours.push({
-					robot : value,
-					human : {
-						days  : humanDays,
-						hours : humanHours
-					}
-				});
+				value['human'] = {
+					days  : __.dayCodeToAbbr(value.days[0]) + '-' + __.dayCodeToAbbr(value.days[value.days.length - 1]),
+					hours : __.twentyFourHourTo12Hour(value.hours.open) + ' - ' + __.twentyFourHourTo12Hour(value.hours.close)
+				};
 			});
-
-			app.model.hours = tempHours;
 		}
 	};
 
