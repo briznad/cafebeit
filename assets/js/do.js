@@ -10411,9 +10411,9 @@ return jQuery;
 			"photo" : {
 				"file" : "cortado-pour-scaled.png",
 				"attribution" : {
-					"name" : "Brad Mallow",
+					"name" : "Jane Doe",
 					"url" : "http://bradmallow.com",
-		            "email" : "brad.mallow@gmail.com"
+		            "email" : "jane.doe@example.com"
 				}
 			},
 			"address" : {
