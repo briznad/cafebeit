@@ -48,28 +48,42 @@
                     </figure>
 
                     <a class="location-link" href="<%= data.address.googleMapsLink %>" target="_blank" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-                        <span itemprop="streetAddress"><%= data.address.streetAddress %></span>,
+                        <div itemprop="streetAddress"><%= data.address.streetAddress %></div>
                         <span itemprop="addressLocality"><%= data.address.addressLocality %></span>,
                         <span itemprop="addressRegion"><%= data.address.addressRegion %></span> <span itemprop="postalCode"><%= data.address.postalCode %></span>
                     </a>
 
                     <section class="hours-section">
                         Hours:
-                        <time itemprop="openingHours" datetime="Mo,Tu,We,Th,Fr 07:00-19:00">
-                            <span class="days">Mon-Fri</span> <span class="hours">7am - 7pm</span>
-                        </time>
-
-                        <time itemprop="openingHours" datetime="Sa,Su 08:00-20:00">
-                            <span class="days">Sat-Sun</span> <span class="hours">8am - 8pm</span>
-                        </time>
+                        <% _.each(data.hours, function(value) { %>
+                            <time itemprop="openingHours" datetime="<%= value.robot %>">
+                                <span class="days"><%= value.human.days %></span> <span class="hours"><%= value.human.hours %></span>
+                            </time>
+                        <% }); %>
                     </section>
 
-                    <a class="contact-link" href="mailto:cafebeit@gmail.com" target="_blank" itemprop="email">cafebeit@gmail.com</a>
+                    <a class="contact-link" href="mailto:cafebeit@gmail.com" target="_blank" itemprop="email"><%= data.email %></a>
 
+                    <% if (!_.isEmpty(data.description)) { %>
+                        <section class="description-section" itemprop="description">
+                            <hr />
+
+                            <% _.each(data.description, function(paragraph) { %>
+                                <p><%= paragraph %></p>
+                            <% }); %>
+                        </section>
+                    <% } %>
+
+                    <!-- include additional meta info for search engines -->
                     <div class="visually-hidden">
-                        Serves Cuisine: <span itemprop="servesCuisine" class="visually-hidden">coffee</span>
+                        Serves Cuisine: <span itemprop="servesCuisine">coffee</span>
 
                         Price Range: <span itemprop="priceRange">$</span>
+
+                        <div itemscope itemprop="hasMap" itemtype="http://schema.org/Map">
+                            <link itemprop="mapType" href="http://schema.org/TransitMap" />
+                            <a itemprop="url" href="<%= data.address.googleMapsLink %>" target="_blank">view map</a>
+                        </div>
                     </div>
                 </section>
             </main>
