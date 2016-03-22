@@ -429,8 +429,12 @@ body {
 
 main {
   max-width: 1000px;
-  margin: 60px auto;
-  padding: 20px; }
+  margin: 0 auto;
+  padding: 10px; }
+  @media only screen and (min-width: 768px) {
+    main {
+      margin-top: 60px;
+      padding: 20px; } }
 
 a {
   text-decoration: none; }
@@ -579,24 +583,57 @@ li {
     top: -1px; }
 
 .homepage main {
-  font-size: 2em; }
+  font-size: 24px; }
+  @media only screen and (min-width: 768px) {
+    .homepage main {
+      font-size: 28px; } }
 .homepage h1 {
   text-align: center;
-  margin-bottom: 0.5em;
-  font-size: 3.5em; }
+  margin-bottom: 0.25em;
+  font-size: 56px; }
+  @media only screen and (min-width: 768px) {
+    .homepage h1 {
+      margin-bottom: 0.5em;
+      font-size: 98px; } }
 .homepage .primary-media {
-  float: left;
-  width: 38.196601125%;
-  margin-right: 50px; }
+  margin-bottom: 25px; }
+  @media only screen and (min-width: 768px) {
+    .homepage .primary-media {
+      float: left;
+      width: 38.196601125%;
+      margin-right: 50px;
+      margin-bottom: 20px; } }
 .homepage .image-attribution {
-  font-size: 0.5em; }
-.homepage .location-link, .homepage .hours-section {
+  font-size: 14px; }
+.homepage .location-link, .homepage .hours-section, .homepage .contact-link, .homepage .description-section {
   display: block;
   margin-bottom: 1em; }
+@media only screen and (max-width: 767px) {
+  .homepage .location-link:after {
+    content: 'click for map';
+    display: block;
+    font-size: 14px; } }
 .homepage .hours-section time {
   display: block; }
 .homepage .hours-section .days {
   display: inline-block;
-  width: 12%; }
+  min-width: 110px; }
+  @media only screen and (min-width: 768px) {
+    .homepage .hours-section .days {
+      min-width: 115px; } }
+.homepage .description-section {
+  font-size: 20px; }
+  @media only screen and (min-width: 768px) {
+    .homepage .description-section {
+      font-size: 24px; } }
+  .homepage .description-section hr {
+    height: 1px;
+    margin: 0;
+    border: none;
+    background-color: #bdc3c7; }
+  .homepage .description-section p {
+    margin-top: 1em; }
+    .homepage .description-section p:first-child {
+      margin-top: 0; }
 
 /* /imports */

@@ -10409,7 +10409,7 @@ return jQuery;
 		return {
 			"name" : "Cafe Beit",
 			"photo" : {
-				"file" : "cortado-pour.png",
+				"file" : "cortado-pour-scaled.png",
 				"attribution" : {
 					"name" : "Brad Mallow",
 					"url" : "http://bradmallow.com",
@@ -10423,7 +10423,8 @@ return jQuery;
 				"postalCode" : "11211"
 			},
 			"hours" : ["Mo,Tu,We,Th,Fr 07:00-19:00", "Sa,Su 08:00-20:00"],
-			"email" : "cafebeit@gmail.com"
+			"email" : "cafebeit@gmail.com",
+			"description" : []
 		};
 	};
 
@@ -10433,40 +10434,42 @@ return jQuery;
 })(window.app = window.app || {}, jQuery);;(function(app, $) {
 	'use strict';
 
-	var _init, _createModel, _getData, _internalExternalImg, _lineBreakify, _postProcessing, _slugify, _uppercasify;
+	var __ = {};
 
-	_init = function(callback) {
-		return _getData(callback);
+	__.init = function(callback) {
+		return __.getData(callback);
 	};
 
-	_getData = function(callback) {
+	__.getData = function(callback) {
 		var request = $.ajax({
 			dataType : 'json',
 			url      : 'data/data.json'
 		});
 
 		request.done(function(data) {
-			_createModel(data);
+			__.createModel(data);
 
 			return callback(true);
 		});
 
 		return request.fail(function(data) {
-			_createModel(app.defaultData.init());
+			__.createModel(app.defaultData.init());
 
 			return callback(true);
 		});
 	};
 
-	_createModel = function(data) {
+	__.createModel = function(data) {
 		app.model = data || {};
 
-		_postProcessing();
+		__.postProcessing();
 	};
 
-	_postProcessing = function() {
+	__.postProcessing = function() {
 		// process photo
-		app.model.photo.file = _internalExternalImg(app.model.photo.file);
+		if (app.model.photo && app.model.photo.file) {
+			app.model.photo.file = __.internalExternalImg(app.model.photo.file);
+		}
 
 		// process photo attribution
 		if (app.model.photo && app.model.photo.attribution) {
@@ -10498,10 +10501,23 @@ return jQuery;
 		if (app.model.hours && app.model.hours.length) {
 			var tempHours = [];
 
-			_.each(app.model.hours, function(value, key) {
+			_.each(app.model.hours, function(value) {
+				var humanDays,
+					humanHours,
+					tempArr = value.split(' '),
+					tempDaysArr = tempArr[0].split(','),
+					tempHoursArr = tempArr[1].split('-');
+
+				humanDays = __.dayCodeToAbbr(tempDaysArr[0]) + '-' + __.dayCodeToAbbr(tempDaysArr.pop());
+
+				humanHours = __.twentyFourHourTo12Hour(tempHoursArr[0]) + ' - ' + __.twentyFourHourTo12Hour(tempHoursArr[1]);
+
 				tempHours.push({
 					robot : value,
-					human : null // TODO use robot value to create human time
+					human : {
+						days  : humanDays,
+						hours : humanHours
+					}
 				});
 			});
 
@@ -10509,19 +10525,37 @@ return jQuery;
 		}
 	};
 
-	_slugify = function(rawInput) {
-		return rawInput.replace(/^\s|\s$/, '').replace(/\s/g, '-');
+	__.dayCodeToAbbr = function(code) {
+		var dayCodeLibrary = {
+			Mo : 'Mon',
+			Tu : 'Tues',
+			We : 'Wed',
+			Th : 'Thurs',
+			Fr : 'Fri',
+			Sa : 'Sat',
+			Su : 'Sun'
+		};
+
+		return dayCodeLibrary[code];
 	};
 
-	_uppercasify = function(string) {
-		return string.charAt(0).toUpperCase() + string.slice(1);
+	__.twentyFourHourTo12Hour = function(time) {
+		time = time.split(':');
+
+		var antePostMeridiem,
+			hour = parseInt(time[0], 10);
+
+		if (hour <= 12) {
+			antePostMeridiem = 'am';
+		} else {
+			hour = hour - 12;
+			antePostMeridiem = 'pm';
+		}
+
+		return hour + (time[1] && parseInt(time[1], 10) !== 0 ? ':' + time[1] : '') + antePostMeridiem;
 	};
 
-	_lineBreakify = function(rawInput) {
-		return rawInput.replace(/\n/g, '<br/>');
-	};
-
-	_internalExternalImg = function(img) {
+	__.internalExternalImg = function(img) {
 		if (img === '') {
 			return false;
 		} else if (/^http/.test(img)) {
@@ -10532,7 +10566,7 @@ return jQuery;
 	};
 
 	app.modelBuildr = {
-		init: _init
+		init: __.init
 	};
 })(window.app = window.app || {}, jQuery);
 ;(function(app, $) {
